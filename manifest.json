@@ -1,0 +1,16 @@
+{
+    "name": "Chessbot",
+    "description": "Chessbot",
+    "version": "0.1",
+    "manifest_version": 1,
+    "content_scripts": [{
+		"matches": ["https://en.lichess.org/*"],
+	    "js": [
+			"jquery.js",
+			"chess.js",
+			"cinnamon_engine.js",
+			"chessbot.js",
+			"color_animation.js"
+		]
+	}]
+}
