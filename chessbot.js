@@ -121,7 +121,6 @@ window.executeMove = function(moveString){
     clickBoard(pos.start[0] + Globals.boardPosition.left, pos.start[1] + Globals.boardPosition.top);
     clickBoard(pos.end[0] + Globals.boardPosition.left, pos.end[1] + Globals.boardPosition.top);
   }, delay);
-    //so executemove is not immediate too? and MaxTime is more than 300
 };
 
 function moveStringToCoords(moveString){
@@ -168,8 +167,7 @@ window.promote = function(target){
   }
   var promotionEl = $("#promotion_choice").find(promotionTarget)[0];
   var t = setTimeout(function(){
-  var promotionElRect = promotionEl.getBoundingClientRect(); //here, I guess it changes though, the coords somehow change i guess it does promoton before selection actually appears on screen, need to put a wait
-    //yeah I have that, it doesn't sleep though for whatever reason, ignores it
+  var promotionElRect = promotionEl.getBoundingClientRect();
   var clickEvent = document.createEvent('MouseEvents');
   clickEvent.initMouseEvent(
     'click', true, true, window, 0,
@@ -192,14 +190,12 @@ window.promotionSequence = false;
 
 
 
-//look good?
 
 function onMove(moves) {
 	turn = moves.length % 2;
 	opponentMoved = (turn === 0 && Globals.isWhite) || (turn === 1 && !Globals.isWhite);
 	lastMove = moves[moves.length-1];    
     //update fen string
-    //this makes a properly formatted game string to send to the chess engine
     if (lastMove){
       Globals.chess.move(lastMove.innerHTML);
     }
